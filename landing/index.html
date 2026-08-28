@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FxChange — Coming Soon</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <meta name="description" content="FxChange will compare currency exchange rates across providers, helping you find competitive rates without checking multiple services manually. Launching soon.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header" id="siteHeader">
+    <div class="header-inner container">
+        <a href="#top" class="logo" aria-label="FxChange home">
+            <span class="logo-fx">Fx</span>Change
+        </a>
+
+        <nav class="nav-desktop" aria-label="Primary">
+            <a href="#about">About</a>
+            <a href="#notify" class="btn btn-primary btn-small">Notify Me</a>
+        </nav>
+
+        <button class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+
+    <nav class="nav-mobile" id="mobileNav" aria-label="Mobile">
+        <a href="#about">About</a>
+        <a href="#notify" class="btn btn-primary">Notify Me</a>
+    </nav>
+</header>
+
+<main id="top">
+
+    <section class="hero">
+        <div class="container hero-grid">
+
+            <div class="hero-content">
+        <span class="eyebrow">
+          <span class="eyebrow-dot"></span> Coming soon
+        </span>
+
+                <h1 class="hero-title">
+                    Find the rate.<br>
+                    <span class="accent-text">Make the better exchange.</span>
+                </h1>
+                <p class="hero-sub">
+                    FxChange is launching soon. It will compare currency exchange rates across providers, so you won't have to check multiple services manually.
+                </p>
+
+                <form class="notify-form" id="notifyFormHero" novalidate
+                      action="https://formspree.io/f/xjyvvpnq"
+                      method="POST"
+                >
+
+                    <label for="emailHero" class="sr-only">Email address</label>
+
+                    <input type="email" id="emailHero" name="email" placeholder="your@email.com" required autocomplete="email">
+                    <button type="submit" class="btn btn-primary">Notify Me</button>
+                </form>
+                <p class="form-note" id="formNoteHero">
+                    Be the first to know at launch — or
+                    <a href="https://t.me/fxchange_updates" target="_blank" rel="noopener">follow updates on Telegram</a>.
+                </p>
+            </div>
+
+            <div class="hero-visual" id="hero-dashboard">
+                <div class="dashboard-card" role="group" aria-label="Product preview — exchange rate comparison concept">
+                    <span class="coming-soon-ribbon">Preview</span>
+
+                    <div class="dashboard-head">
+                        <div class="dashboard-pair">
+              <span class="currency-chip">
+                <span class="ccy-icon ccy-eur">€</span> EUR
+              </span>
+                            <svg class="pair-arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12h16M14 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            <span class="currency-chip">
+                <span class="ccy-icon ccy-usd">$</span> USD
+              </span>
+                        </div>
+                        <span class="dashboard-tag">sample data</span>
+                    </div>
+
+                    <div class="dashboard-amount">
+                        <span class="amount-from">1,000 EUR</span>
+                        <span class="amount-arrow">→</span>
+                        <span class="amount-to">$1,171.20</span>
+                    </div>
+
+                    <ul class="provider-list">
+
+                        <li class="provider-card is-best" data-rate="1.1712">
+                            <div class="provider-row">
+                                <span class="provider-name">Wise</span>
+                                <span class="badge-best">Best rate</span>
+                            </div>
+                            <div class="provider-stats">
+                                <div class="stat"><span class="stat-label">Rate</span><span class="stat-value">1.1712</span></div>
+                                <div class="stat"><span class="stat-label">Fee</span><span class="stat-value">€4.20</span></div>
+                                <div class="stat"><span class="stat-label">Receive</span><span class="stat-value stat-receive">$1,166.28</span></div>
+                            </div>
+                            <div class="rate-bar"><span class="rate-bar-fill" style="--fill:100%"></span></div>
+                        </li>
+
+                        <li class="provider-card" data-rate="1.1688">
+                            <div class="provider-row">
+                                <span class="provider-name">Exchange Provider</span>
+                            </div>
+                            <div class="provider-stats">
+                                <div class="stat"><span class="stat-label">Rate</span><span class="stat-value">1.1688</span></div>
+                                <div class="stat"><span class="stat-label">Fee</span><span class="stat-value">€7.00</span></div>
+                                <div class="stat"><span class="stat-label">Receive</span><span class="stat-value">$1,161.80</span></div>
+                            </div>
+                            <div class="rate-bar"><span class="rate-bar-fill" style="--fill:81%"></span></div>
+                        </li>
+
+                        <li class="provider-card" data-rate="1.1651">
+                            <div class="provider-row">
+                                <span class="provider-name">Exchange Provider</span>
+                            </div>
+                            <div class="provider-stats">
+                                <div class="stat"><span class="stat-label">Rate</span><span class="stat-value">1.1651</span></div>
+                                <div class="stat"><span class="stat-label">Fee</span><span class="stat-value">€5.50</span></div>
+                                <div class="stat"><span class="stat-label">Receive</span><span class="stat-value">$1,159.60</span></div>
+                            </div>
+                            <div class="rate-bar"><span class="rate-bar-fill" style="--fill:63%"></span></div>
+                        </li>
+
+                    </ul>
+                    <p class="dashboard-footnote">Illustrative preview — live rates arrive at launch.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="container about-inner">
+            <h2 class="section-title">Built in Cyprus.<br>Designed for smarter exchange.</h2>
+            <p class="about-text">
+                FxChange is being built by a Computer Science student in Cyprus, after noticing how fragmented currency exchange can be. Different exchange desks, fintech services and P2P offers can provide different rates, making comparison unnecessarily difficult — FxChange aims to fix that.
+            </p>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="container">
+            <div class="features-grid">
+
+                <article class="feature-card">
+                    <svg class="feature-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 7h11M7 7l3-3M7 7l3 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M17 17H6M17 17l-3-3M17 17l-3 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    <h3>Compare</h3>
+                    <p>Compare exchange rates from multiple providers in one place.</p>
+                </article>
+
+                <article class="feature-card">
+                    <svg class="feature-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M2 12s3.5-6.5 10-6.5S22 12 22 12s-3.5 6.5-10 6.5S2 12 2 12z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="12" r="2.6" stroke="currentColor" stroke-width="1.6"/></svg>
+                    <h3>Transparency</h3>
+                    <p>See rates, fees and the amount you'll actually receive.</p>
+                </article>
+
+                <article class="feature-card">
+                    <svg class="feature-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 4L2.5 11.2c-1 .4-1 1.9.1 2.2l4.6 1.5 1.7 5.3c.3.9 1.4 1.1 2.1.4l2.6-2.6 4.7 3.5c.9.6 2.1.1 2.3-.9L23 5.3c.2-1-.9-1.8-2-1.3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+                    <h3>Telegram</h3>
+                    <p>Coming to a Telegram Mini App — no extra install needed.</p>
+                </article>
+
+                <article class="feature-card">
+                    <svg class="feature-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-6.1 7-11.5A7 7 0 0 0 5 9.5C5 14.9 12 21 12 21z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="9.4" r="2.3" stroke="currentColor" stroke-width="1.6"/></svg>
+                    <h3>Cyprus First</h3>
+                    <p>Launching first for Cyprus and its international community.</p>
+                </article>
+
+            </div>
+        </div>
+
+    </section>
+
+</main>
+
+<footer class="site-footer" id="contact">
+    <div class="container footer-inner">
+        <div class="footer-brand">
+            <a href="#top" class="logo"><span class="logo-fx">Fx</span>Change</a>
+            <p>Currency exchange comparison, simplified. Launching soon.</p>
+        </div>
+        <div class="footer-links">
+            <a href="https://github.com/apanov-dev" target="_blank" rel="noopener">GitHub</a>
+            <a href="https://www.linkedin.com/in/artemy-panov-9b250b378" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="https://t.me/fxchange_updates" target="_blank" rel="noopener">Telegram</a>
+        </div>
+    </div>
+    <div class="container">
+        <p class="footer-copy">© 2026 FxChange. Currently in development.</p>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
