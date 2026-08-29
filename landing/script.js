@@ -75,19 +75,21 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    /* ---------- Waitlist forms (client-side only, no backend yet) ---------- */
+    /* ---------- Waitlist form — submits to Formspree ---------- */
     const isValidEmail = (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 
-    const setupNotifyForm = (formId, noteId) => {
-        const form = document.getElementById(formId);
-        const note = document.getElementById(noteId);
-        if (!form || !note) return;
+    const form = document.getElementById('notifyFormHero');
+    const note = document.getElementById('formNoteHero');
 
+    if (form) {
         const input = form.querySelector('input[type="email"]');
-        const button = form.querySelector('button');
-        const originalNote = note.innerHTML;
+        const button = form.querySelector('button[type="submit"]');
+        const originalButtonText = button.textContent;
+        const originalNoteHTML = note ? note.innerHTML : '';
 
-        form.addEventListener('submit', (e) => {
+        input.addEventListener('input', () => input.classList.remove('is-invalid'));
+
+        form.addEventListener('submit', async (e) => {
             e.preventDefault();
             const email = input.value.trim();
 
@@ -99,68 +101,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
             input.classList.remove('is-invalid');
             button.disabled = true;
-            button.textContent = 'Added';
+            button.textContent = 'Sending...';
+            if (note) {
+                note.classList.remove('is-error');
+                note.textContent = '';
+            }
 
-            note.textContent = "You're on the list — we'll email you at launch.";
-            note.classList.add('is-success');
-            form.reset();
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: new FormData(form),
+                    headers: { 'Accept': 'application/json' }
+                });
 
-            // Placeholder: no backend yet. Replace with a real submit
-            document.addEventListener('DOMContentLoaded', () => {
-                const form = document.getElementById('notifyFormHero');
+                if (!response.ok) throw new Error('Form submission failed');
 
-                if (form) {
-                    form.addEventListener('submit', async (e) => {
-                        e.preventDefault();
-
-                        const button = form.querySelector('button[type="submit"]');
-                        const input = form.querySelector('input[type="email"]');
-                        const originalBtnText = button.textContent;
-
-                        // Показываем состояние загрузки
-                        button.disabled = true;
-                        button.textContent = 'Sending...';
-
-                        try {
-                            const response = await fetch(form.action, {
-                                method: 'POST',
-                                body: new FormData(form),
-                                headers: {
-                                    'Accept': 'application/json'
-                                }
-                            });
-
-                            if (response.ok) {
-                                // Успешная отправка
-                                form.innerHTML = `
-            <div class="success-message">
-              <span>✓</span> You're on the list! We'll notify you when FxChange launches.
-            </div>
-          `;
-                            } else {
-                                throw new Error('Form submission failed');
-                            }
-                        } catch (error) {
-                            // Ошибка отправки
-                            button.disabled = false;
-                            button.textContent = originalBtnText;
-                            alert('Oops! There was a problem submitting your email. Please try again.');
-                        }
-                    });
+                form.innerHTML = `
+                    <div class="success-message">
+                        <span>✓</span> You're on the list — we'll email you at launch.
+                    </div>
+                `;
+                if (note) {
+                    note.innerHTML = 'Or <a href="https://t.me/fxchange_updates" target="_blank" rel="noopener">follow updates on Telegram</a>.';
                 }
-            });
-            // (fetch to your waitlist endpoint) once FxChange has one.
-            setTimeout(() => {
+            } catch (error) {
                 button.disabled = false;
-                button.textContent = form === document.getElementById('notifyFormFooter')
-                    ? 'Join Waitlist'
-                    : 'Notify Me';
-            }, 4000);
+                button.textContent = originalButtonText;
+                if (note) {
+                    note.textContent = 'Something went wrong — please try again.';
+                    note.classList.add('is-error');
+                } else {
+                    alert('Something went wrong — please try again.');
+                }
+            }
         });
-
-        input.addEventListener('input', () => input.classList.remove('is-invalid'));
-    };
-
-    setupNotifyForm('notifyFormHero', 'formNoteHero');
-    setupNotifyForm('notifyFormFooter', 'formNoteFooter');
+    }
 });
